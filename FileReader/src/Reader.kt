@@ -1,4 +1,4 @@
 interface Reader {
-    fun leer(): String
+    fun read(): String
     fun close()
 }
