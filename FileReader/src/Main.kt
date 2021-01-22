@@ -1,12 +1,12 @@
 fun main() {
     var shortFile: String = "Hola"
-    val longFile: String = "Documento de prueba para ensayar la funcionalidad del componente. Exitos"
+    val file: String = "Documento de prueba para ensayar la funcionalidad del componente. Exitos"
 
-    val reader: Reader = FileReader(longFile)
+    val reader: Reader = FileReader(shortFile)
     val richReader: RichReader = RichReaderImpl(reader)
 
-    longFile.forEach {
-        print(richReader.replaceSpaceToUnderline())
+    shortFile.forEach {
+        print(richReader.toLowerCase())
     }
 
 }
