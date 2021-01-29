@@ -3,7 +3,7 @@ package compositeSolution
 fun main() {
 
     val folder: Folder = Folder(
-        nameFolder = "compositeSolution.Folder 1"
+        nameFolder = "Folder 1"
     )
 
     val file1: Component = File(
@@ -21,7 +21,7 @@ fun main() {
 
 
     val folder2: Folder = Folder(
-        nameFolder = "compositeSolution.Folder 2"
+        nameFolder = "Folder 2"
     )
 
     val file3: Component = File(
@@ -35,7 +35,7 @@ fun main() {
     )
 
     val folder3 = Folder(
-        nameFolder = "compositeSolution.Folder 3"
+        nameFolder = "Folder 3"
     )
 
     folder3.add(file2)
@@ -50,30 +50,30 @@ fun main() {
 
     println(folder2)
 
-    println("compositeSolution.Folder 2 weight = ${folder2.calculateWeight()}")
-    println("compositeSolution.Folder 1 weight = ${folder.calculateWeight()}")
+    println("Folder 2 weight = ${folder2.calculateWeight()}")
+    println("Folder 1 weight = ${folder.calculateWeight()}")
 
 
     println()
-    val component: Component = folder.search("compositeSolution.Folder 2")
-    println("compositeSolution.Component founded: \n$component")
+    val component: Component = folder.search("Folder 2")
+    println("Component founded: \n$component")
 
     folder.remove(folder2)
 
     println()
 
     try {
-        val component2: Component = folder.search("compositeSolution.Folder 2")
-        println("compositeSolution.Component founded: \n$component2")
+        val component2: Component = folder.search("Folder 2")
+        println("Component founded: \n$component2")
     }catch (exception: Exception){
         println(exception)
     }
 
     val copyFolder = folder.copy()
-    println("compositeSolution.Folder copied: \n$copyFolder")
+    println("Folder copied: \n$copyFolder")
 
     val copyFile: Component = file1.copy()
-    println("compositeSolution.File copied: $copyFile")
+    println("File copied: $copyFile")
 
 
 
