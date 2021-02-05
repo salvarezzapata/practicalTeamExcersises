@@ -30,21 +30,26 @@ fun main() {
     )
 
     val file4: Component = File(
-        nameFile = "file4",
+        nameFile = "File4",
         weightFile = 3
+    )
+
+    val file5: Component = File(
+        nameFile = "File5",
+        weightFile = 2
     )
 
     val folder3 = Folder(
         nameFolder = "Folder 3"
     )
 
-    folder3.add(file2)
+    folder3.add(file5)
 
     folder2.add(file3)
     folder2.add(file4)
     folder2.add(folder3)
 
-    folder.add(folder2)
+     folder.add(folder2)
 
     println(folder)
 
@@ -55,15 +60,15 @@ fun main() {
 
 
     println()
-    val component: Component = folder.search("Folder 2")
+    val component: Component = folder.search("File5")
     println("Component founded: \n$component")
 
-    folder.remove(folder2)
+    folder.remove(file5)
 
     println()
 
     try {
-        val component2: Component = folder.search("Folder 2")
+        val component2: Component = folder.search("File5")
         println("Component founded: \n$component2")
     }catch (exception: Exception){
         println(exception)

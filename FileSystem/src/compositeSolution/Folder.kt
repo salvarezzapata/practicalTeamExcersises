@@ -10,9 +10,15 @@ class Folder(var nameFolder: String = "", var weightFolder: Int = 0) : Component
 
     fun search(name: String): Component {
         systemFiles.forEach { component: Component ->
-            if(name == component.name) return component
+            if (name == component.name) {
+                return component
+            }
+
+            if (component is Folder) {
+                return component.search(name)
+            }
         }
-        throw Exception("compositeSolution.Component not found")
+        throw Exception("Component not found")
     }
 
     override fun copy(): Component {
@@ -20,15 +26,21 @@ class Folder(var nameFolder: String = "", var weightFolder: Int = 0) : Component
     }
 
     fun remove(element: Component) {
-        systemFiles.remove(element)
+        if(systemFiles.contains(element)) {
+            systemFiles.remove(element)
+        } else {
+            systemFiles.forEach { component: Component ->
+                if(component is Folder) {
+                    component.remove(element)
+                }
+            }
+        }
     }
 
     override fun calculateWeight(): Int {
-        var totalWeight: Int = 0
-        systemFiles.forEach { component: Component ->
-            totalWeight += component.calculateWeight()
-        }
-        return totalWeight
+        return systemFiles.map {
+            it.calculateWeight()
+        }.reduce { totalWeight: Int, currentValue: Int -> totalWeight + currentValue }
     }
 
     private fun showInformation(component: Component): String {
